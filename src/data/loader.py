@@ -12,8 +12,8 @@ def load_csv(file_path: str) -> pd.DataFrame:
     return pd.read_csv(file_path)
 
 
-def load_raw_data(data_dir: str = "../datasets/raw"):
-    """Load all Walmart datasets"""
+def load_raw_data(data_dir: str = "../data/raw"):
+    """Load all Walmart data"""
     data_path = Path(data_dir)
 
     train = pd.read_csv(data_path / "train.csv")
@@ -23,8 +23,8 @@ def load_raw_data(data_dir: str = "../datasets/raw"):
     return train, features, stores
 
 
-def merge_datasets(train, features, stores):
-    """Merge train, features, and stores datasets"""
+def merge_data(train, features, stores):
+    """Merge train, features, and stores data"""
 
     df = train.merge(features, on=["Store", "Date"], how="left")
     df = df.merge(stores, on="Store", how="left")
@@ -32,16 +32,16 @@ def merge_datasets(train, features, stores):
     return df
 
 
-def load_full_data(data_dir: str = "../datasets/raw"):
+def load_full_data(data_dir: str = "../data/raw"):
     """
     Main function: load + merge everything
     This is what notebooks should call
     """
 
-    logging.info("Loading raw datasets...")
+    logging.info("Loading raw data...")
 
     train, features, stores = load_raw_data(data_dir)
-    df = merge_datasets(train, features, stores)
+    df = merge_data(train, features, stores)
 
     logging.info(f"Final dataset shape: {df.shape}")
 
