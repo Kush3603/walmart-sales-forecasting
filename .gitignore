@@ -216,3 +216,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# =========================
+# Project-specific ignores (Walmart Forecasting)
+# =========================
+
+# Scratch notebooks
+notebooks/_scratch/
+user.ipynb
+scratchpad.ipynb
+
+# Models
+*.pkl
+*.joblib
+
+# Optional (uncomment if files get large)
+# data/processed/
+# data/interim/
